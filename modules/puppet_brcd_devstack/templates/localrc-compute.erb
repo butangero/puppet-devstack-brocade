@@ -1,0 +1,41 @@
+# OPENSTACK COMPUTE NODE
+
+# Use OpenStack Grizzly
+NOVA_BRANCH=stable/grizzly
+CINDER_BRANCH=stable/grizzly
+GLANCE_BRANCH=stable/grizzly
+HORIZON_BRANCH=stable/grizzly
+KEYSTONE_BRANCH=stable/grizzly
+QUANTUM_BRANCH=stable/grizzly
+
+disable_service n-net
+ENABLED_SERVICES=n-cpu,rabbit,quantum,q-agt,n-novnc,n-xvnc
+
+# Enable brocade quantum plugin
+Q_PLUGIN=brocade
+
+DATABASE_PASSWORD=openstack
+ADMIN_PASSWORD=openstack
+RABBIT_PASSWORD=openstack
+SERVICE_PASSWORD=openstack
+SERVICE_TOKEN=openstack
+MYSQL_PASSWORD=openstack
+
+LOG=True
+LOGFILE=stack.sh.log
+LOGDAYS=1
+
+# This nodes management IP
+HOST_IP=<%= ipaddress_eth1 %>
+
+# This is the controller node’s IP
+SERVICE_HOST=192.168.100.2
+
+MYSQL_HOST=$SERVICE_HOST
+RABBIT_HOST=$SERVICE_HOST
+GLANCE_HOSTPORT=$SERVICE_HOST:9292
+KEYSTONE_AUTH_HOST=$SERVICE_HOST
+KEYSTONE_SERVICE_HOST=$SERVICE_HOST
+VNCSERVER_LISTEN=$HOST_IP
+VNCSERVER_PROXYCLIENT_ADDRESS=$HOST_IP
+

@@ -1,0 +1,3 @@
+# passwordless sudoer for devstack
+stack ALL=(ALL) NOPASSWD: ALL
+
