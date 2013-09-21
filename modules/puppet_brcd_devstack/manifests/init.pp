@@ -1,7 +1,7 @@
 class puppet_brcd_devstack (
   $ctrl_ip      = '',
   $mgmt_ip      = $::ipaddress_eth0,
-  $tenant_int   = $::ipaddress_eth1,
+  $tenant_int   = 'eth1',
   $vcs_username = 'admin',
   $vcs_password = 'password',
   $vcs_ipaddr,
@@ -24,7 +24,8 @@ class puppet_brcd_devstack (
     provider => git,
     source   => 'https://code.grnet.gr/git/ncclient',
   } ->
-  exec {'python /tmp/ncclient/setup.py install':
+  exec {'python ./setup.py install':
+    cwd       => '/tmp/ncclient',
     path      => '/usr/sbin:/usr/bin:/sbin:/bin',
     creates   => '/usr/local/lib/python2.7/dist-packages/ncclient',
     logoutput => true
